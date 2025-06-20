@@ -42,7 +42,7 @@ Feature: Test de API súper simple
         When method POST
         Then status 201
         And print response
-        And match response.name == 'CohetePlus36'
+        And match response.name == 'CohetePlus38'
      Examples:
             | read('classpath:../data/user.csv') |
 
@@ -80,12 +80,12 @@ Feature: Test de API súper simple
         When method PUT
         Then status 200
         And print response
-        And match response.name == 'CohetePlus36'
+        And match response.name == 'CohetePlus38'
      Examples:
             | read('classpath:../data/idPersonajes.csv') |
 
     @id:8 @ActualizarPersonajeNoExiste
-    Scenario Outline: T-API-BTFAC-123-CA07- Actualizar Personaje No Existe
+    Scenario Outline: T-API-BTFAC-123-CA08- Actualizar Personaje No Existe
         Given url base_url + username + '/api/characters/' + idPersonaje
         * print idPersonaje
         And header Content-Type = 'application/json'
@@ -95,11 +95,11 @@ Feature: Test de API súper simple
         Then status 404
         And print response
      Examples:
-            | read('classpath:../data/IdPersonajeNoExiste.csv) |
+            | read('classpath:../data/IdPersonajeNoExiste.csv') |
 
 
-  @id:5 @EliminarPet
-    Scenario Outline: T-API-BTFAC-123-CA05- Eliminar Personaje
+  @id:9 @EliminarPersonaje
+    Scenario Outline: T-API-BTFAC-123-CA09- Eliminar Personaje
        Given url base_url + username + '/api/characters/' + idPersonaje
         When method DELETE
         Then status 204
@@ -109,8 +109,8 @@ Feature: Test de API súper simple
 
 
   
-  @id:5 @EliminarPet
-    Scenario Outline: T-API-BTFAC-123-CA05- Eliminar Personaje
+  @id:10 @EliminarPersonajeNoExiste
+    Scenario Outline: T-API-BTFAC-123-CA10- Eliminar Personaje No Existe
        Given url base_url + username + '/api/characters/' + idPersonaje
         When method DELETE
         Then status 404
